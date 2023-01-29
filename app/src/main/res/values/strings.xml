@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DermoApp</string>
+    <string name="getinto">Ingresar</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="email">Correo Electronico</string>
+    <string name="name">Nombres y apellidos</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="nacionality">Nacionalidad</string>
+    <string name="terms">Aceptar los términos y condiciones</string>
+    <string name="register">Registrarse</string>
+    <string name="password">Contraseña</string>
+    <string name="skintype">Tipo de piel</string>
+
 </resources>
