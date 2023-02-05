@@ -1,14 +1,25 @@
 <resources>
     <string name="app_name">DermoApp</string>
     <string name="getinto">Ingresar</string>
-    <string name="login">Iniciar sesión</string>
-    <string name="email">Correo Electronico</string>
-    <string name="name">Nombres y apellidos</string>
-    <string name="birthday">Fecha de nacimiento</string>
-    <string name="nacionality">Nacionalidad</string>
     <string name="terms">Aceptar los términos y condiciones</string>
     <string name="register">Registrarse</string>
-    <string name="password">Contraseña</string>
+    <string name="welcome">Bienvenid@</string>
     <string name="skintype">Tipo de piel</string>
+    <string name="login">INICIAR SESIÓN</string>
+    <string name="password">Contraseña</string>
+    <string name="sign_in">INGRESAR</string>
+    <string name="new_account">REGISTRARSE</string>
+    <string name="SignUp">REGISTRAR</string>
+    <string name="name">Nombres y Apellidos</string>
+    <string name="skin">Tipo de piel</string>
+    <string name="birthday">Fecha de Nacimiento</string>
+    <string name="nacionality">Nacionalidad</string>
+    <string name="navigation_drawer_open">navigation drawer opened</string>
+    <string name="navigation_drawer_close">navigation drawer closed</string>
+    <string name="email">Correo electronico</string>
+    <string name="log_out">Cerrar Sesión</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+
 
 </resources>
