@@ -41,7 +41,7 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun userName() {
-
+    fun login() {
+        onView(withHint("Correo electronico")).perform(typeText("a@a.com"));
     }
 }
