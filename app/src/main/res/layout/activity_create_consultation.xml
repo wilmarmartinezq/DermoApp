@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".CreateConsultationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageRegister"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@android:color/transparent"
+            android:onClick="createConsultationBackIntent"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/up"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textViewSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewConsultation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/create_appointment"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/editTextLesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/text_edit"
+                android:ems="15"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="Lesion"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/editTextForma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/text_edit"
+                android:ems="15"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="Forma"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"/>
+
+
+            <EditText
+                android:id="@+id/editTextNumeroLesiones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/text_edit"
+                android:ems="15"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="Numero Lesiones"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/editTextDistribucion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@drawable/text_edit"
+                android:ems="15"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="Distribucion"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"/>
+
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop" />
+
+
+            <Button
+                android:id="@+id/btn_choose_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:background="@color/white"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="@string/select_image"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/image"/>
+
+            <EditText
+                android:id="@+id/editTextComentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="24dp"
+                android:background="@drawable/text_edit"
+                android:ems="15"
+                android:hint="@string/comment"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="36dp"/>
+
+
+
+            <Button
+                android:id="@+id/btn_register_consultation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:onClick="consultationUpConfirm"
+                android:background="@color/colorPrimary"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="@string/create_appointment"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

@@ -21,7 +21,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".AppointmentActivity"
+            android:name=".CreateConsultationActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensorPortrait" />
 
