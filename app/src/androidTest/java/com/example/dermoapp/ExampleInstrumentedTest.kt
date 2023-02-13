@@ -19,11 +19,23 @@ import java.util.regex.Pattern.matches
 import androidx.test.espresso.action.ViewActions.typeText
 
 import android.R
+import android.widget.Button
 import androidx.test.espresso.Espresso
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import java.util.EnumSet.allOf
+import org.junit.After
+
+import android.widget.EditText
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+
+import org.junit.Before
+
+import androidx.test.rule.ActivityTestRule
+
+import org.junit.Rule
+import java.lang.Exception
 
 
 /**
@@ -40,8 +52,39 @@ class ExampleInstrumentedTest {
         assertEquals("com.example.dermoapp", appContext.packageName)
     }
 
+}
+/*
+class LoginActivityTest {
+    @Rule
+    var mActivityTestRule = ActivityTestRule(
+        LoginActivity::class.java
+    )
+    var loginActivity: LoginActivity? = null
+    @Before
+    @Throws(Exception::class)
+    fun setUp() {
+        loginActivity = mActivityTestRule.activity
+    }
+
     @Test
-    fun login() {
-        onView(withHint("Correo electronico")).perform(typeText("a@a.com"));
+    fun testLogin() {
+        getInstrumentation().runOnMainSync(Runnable {
+
+            val email = loginActivity!!.findViewById<EditText>(R.id.edit)
+            val pass = loginActivity!!.findViewById<EditText>(R.id.password)
+            email.setText("email")
+            pass.setText("pass")
+            val loginBtn: Button = loginActivity!!.findViewById(R.id.login)
+            loginBtn.performClick()
+            assertTrue(loginActivity.isCurUserLoggedIn())
+        })
+    }
+
+    @After
+    @Throws(Exception::class)
+    fun tearDown() {
+        loginActivity = null
     }
 }
+
+ */

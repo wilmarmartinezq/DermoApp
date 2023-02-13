@@ -15,6 +15,10 @@
     <string name="nacionality">Nacionalidad</string>
     <string name="email">Correo electronico</string>
     <string name="log_out">Cerrar sesión</string>
+    <string name="appointment">Crear Consulta</string>
+    <string name="create_appointment">CREAR CONSULTA</string>
+    <string name="comment">Comentario</string>
+    <string name="select_image">SELECCIONAR UNA IMAGEN</string>
 
 
 

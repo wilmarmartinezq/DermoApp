@@ -20,6 +20,10 @@
             android:name=".RegisterActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".CreateConsultationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensorPortrait" />
 
         <activity
             android:name=".LoginActivity"
