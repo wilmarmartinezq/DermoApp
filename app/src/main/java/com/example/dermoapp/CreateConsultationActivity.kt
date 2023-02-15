@@ -1,9 +1,11 @@
 package com.example.dermoapp
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -91,23 +93,6 @@ class CreateConsultationActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImage(){
-        if(filePath != null){
-            val ref = storageReference?.child("images_consultations/" + UUID.randomUUID().toString())
-            val uploadTask = ref?.putFile(filePath!!)?.addOnSuccessListener {
-
-                val result = it.metadata!!.reference!!.downloadUrl;
-                result.addOnSuccessListener {
-
-                 var imageurl = it.toString()
-
-                }
-            }
-
-        }
-
-    }
-
 
     fun consultationUpConfirm(view: View) {
         shape=editTextForma.text.toString()
@@ -140,7 +125,6 @@ class CreateConsultationActivity : AppCompatActivity() {
                         startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS))
                     }.show()
             }else{
-                uploadImage()
                 registerConsultation()
 
             }
@@ -148,38 +132,68 @@ class CreateConsultationActivity : AppCompatActivity() {
     }
 
     private fun registerConsultation() {
-        val queue= Volley.newRequestQueue(this)
-        val consultationDetails=makeHashMapConsultation().toMap()
-        val jsonObjectRequest=object : JsonObjectRequest(
-            Method.POST,
-            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations",
-            JSONObject(consultationDetails),
-            Response.Listener {
-                try {
-                    Toast.makeText(this,"Registrado consulta ...",Toast.LENGTH_SHORT).show()
-                    mainActivityIntent()
-                }catch (e: Exception){
-                    Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
-                }
-            },
-            Response.ErrorListener {
-            }) {
+
+
+        if(filePath != null){
+            val mProgressDialog = ProgressDialog(this)
+            mProgressDialog.setTitle("")
+            mProgressDialog.setMessage("Registrando consulta")
+
+            val ref = storageReference?.child("images_consultations/" + UUID.randomUUID().toString())
+            ref?.putFile(filePath!!)?.addOnSuccessListener {
+
+                val result = it.metadata!!.reference!!.downloadUrl;
+                result.addOnSuccessListener {
+                    mProgressDialog.show()
+
+                    var imageurl = it.toString()
+
+
+                    fun makeHashMapConsultation():Map<String,String> {
+
+                        val consultationDetails=HashMap<String,String>()
+                        consultationDetails["shape"] = shape
+                        consultationDetails["numberOfInjuries"] = numberOfInjuries
+                        consultationDetails["distribution"] = distribution
+                        consultationDetails["comment"] = comment
+                        consultationDetails["image"] = imageurl
+
+
+
+                        return consultationDetails
+
+                    }
+                    val queue= Volley.newRequestQueue(this)
+                    val consultationDetails=makeHashMapConsultation().toMap()
+                    val jsonObjectRequest=object : JsonObjectRequest(
+                        Method.POST,
+                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations",
+                        JSONObject(consultationDetails),
+                        Response.Listener {
+                            try {
+                                mainActivityIntent()
+                                mProgressDialog.dismiss()
+                            }catch (e: Exception){
+                                mProgressDialog.dismiss()
+                                Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
+                            }
+                        },
+                        Response.ErrorListener {
+                            mProgressDialog.dismiss()
+                        }) {
+                    }
+                    queue.add(jsonObjectRequest)
+            }
         }
-        queue.add(jsonObjectRequest)
+
+            }
+        else{
+            Toast.makeText(this, "Debes seleccionar una imagen", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 
-    private fun makeHashMapConsultation():Map<String,String> {
-        val consultationDetails=HashMap<String,String>()
-        consultationDetails["shape"] = shape
-        consultationDetails["numberOfInjuries"] = numberOfInjuries
-        consultationDetails["distribution"] = distribution
-        consultationDetails["comment"] = comment
-
-
-
-        return consultationDetails
-    }
 
     private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))}
 
