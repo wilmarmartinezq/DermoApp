@@ -25,6 +25,8 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensorPortrait" />
 
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="selected_item">Selected item:</string>
     <string-array name="skinType_array">
         <item>Normal</item>
         <item>Grasa</item>
@@ -9,6 +8,53 @@
 
     </string-array>
 
+    <string-array name="injuryType_array">
+        <item>Mácula</item>
+        <item>Pápula</item>
+        <item>Parche</item>
+        <item>Placa</item>
+        <item>Nódulo</item>
+        <item>Ampolla</item>
+        <item>Úlcera</item>
+        <item>Vecícula</item>
+
+
+    </string-array>
+
+
+    <string-array name="shapeType_array">
+        <item>Anillo</item>
+        <item>Domo</item>
+        <item>Ovalada</item>
+        <item>Redonda</item>
+        <item>Indefinida</item>
+        <item>Enrollada</item>
+
+
+    </string-array>
+
+    <string-array name="numberOfInjuries_array">
+        <item>Solitaria</item>
+        <item>Múltiple</item>
+        <item>Recurrente</item>
+        <item>Placa</item>
+
+
+
+    </string-array>
+
+
+    <string-array name="distribution_array">
+        <item>Asimétrica</item>
+        <item>Confluente</item>
+        <item>Simétrica</item>
+        <item>Esparcida</item>
+
+
+    </string-array>
+
+
 
 
 </resources>
+

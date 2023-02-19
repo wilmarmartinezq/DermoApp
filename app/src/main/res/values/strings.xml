@@ -4,7 +4,8 @@
     <string name="terms">Al registrarse usted acepta los términos y condiciones</string>
     <string name="register">Registrarse</string>
     <string name="welcome">Bienvenid@</string>
-    <string name="skintype">Piel: normal-seca-grasa-mixta</string>
+    <string name="skintype">Tipo de piel</string>
+    <string name="typeofinjury">Tipo de Herida</string>
     <string name="login">INICIAR SESIÓN</string>
     <string name="password">Contraseña</string>
     <string name="sign_in">INGRESAR</string>
@@ -17,8 +18,12 @@
     <string name="log_out">Cerrar sesión</string>
     <string name="appointment">Crear Consulta</string>
     <string name="create_appointment">CREAR CONSULTA</string>
+    <string name="automatic_appointment">CONSULTA AUTOMATICA</string>
     <string name="comment">Comentario</string>
     <string name="select_image">SELECCIONAR UNA IMAGEN</string>
+    <string name="shapetype">Forma de la Herida</string>
+    <string name="numberofinjuries">Número de Heridas</string>
+    <string name="distribution">Distribución de la Herida</string>
 
 
 

@@ -139,26 +139,27 @@
                 android:textColorHint="@android:color/black"
                 android:textColor="@android:color/black"/>
 
-            <EditText
-                android:id="@+id/editTextSkinType"
+            <TextView
+                android:id="@+id/textViewSkinType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:background="@drawable/text_edit"
-                android:ems="15"
-                android:hint="@string/skintype"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp"
-                android:textColorHint="@android:color/black"
-                android:textColor="@android:color/black"/>
+                android:layout_marginTop="8dp"
+                android:text="@string/skintype"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
 
             <Spinner
                 android:id="@+id/skinType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:textColorHint="@android:color/black"
+                android:textColor="@android:color/black"/>
+
+
             <CheckBox
                 android:id="@+id/checkbox_terminos"
                 android:layout_width="wrap_content"
