@@ -163,7 +163,7 @@ class CreateConsultationActivity : AppCompatActivity() {
 
     }
 
-    fun createConsultationBackIntent(view: View) {
+    fun createConsultationBackIntent() {
         onBackPressed()
     }
 
