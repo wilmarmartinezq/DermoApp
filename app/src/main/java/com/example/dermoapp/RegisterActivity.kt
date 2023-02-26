@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun signUpBackIntent() {
+    fun signUpBackIntent(view:View) {
         onBackPressed()
     }
 

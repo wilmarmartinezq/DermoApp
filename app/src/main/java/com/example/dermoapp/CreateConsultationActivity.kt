@@ -157,13 +157,9 @@ class CreateConsultationActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
     }
 
-    fun createConsultationBackIntent() {
+    fun createConsultationBackIntent(view:View) {
         onBackPressed()
     }
 
@@ -333,7 +329,7 @@ class CreateConsultationActivity : AppCompatActivity() {
                     val consultationPatientDetails=makeHashMapConsultationPatient().toMap()
                     val jsonObjectRequestPatient=object : JsonObjectRequest(
                         Method.POST,
-                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/"+username+"/consultations/"+idvalue,
+                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$idvalue",
 
                         JSONObject(consultationPatientDetails),
                         Response.Listener {
@@ -346,7 +342,6 @@ class CreateConsultationActivity : AppCompatActivity() {
                             }
                         },
                         Response.ErrorListener {
-                            Toast.makeText(this, "Verificar la conexión a internet", Toast.LENGTH_SHORT).show()
                             mProgressDialog.dismiss()
                         }) {
                     }
@@ -365,7 +360,7 @@ class CreateConsultationActivity : AppCompatActivity() {
 
     private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))
     fun consultationAutomaticUpConfirm(view: View) {
-        Toast.makeText(this, "En proceso de creación", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Proceso en desarrollo", Toast.LENGTH_SHORT).show()
 
     }
 
