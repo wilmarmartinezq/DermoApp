@@ -6,6 +6,7 @@ El objetivo de DermoApp es apoyar a pacientes con problemas dermatológicos en e
 ![image](https://user-images.githubusercontent.com/79046602/216842690-7e828eba-008f-4200-8e10-bc4605c00cec.png)
 ![image](https://user-images.githubusercontent.com/79046602/216842725-106ded1f-6c53-4c26-a3d9-6a6c54dae696.png)
 ![image](https://user-images.githubusercontent.com/79046602/219998369-44ae2475-1021-4a80-91d4-b8539a78f5d0.png)
+![image](https://user-images.githubusercontent.com/79046602/222974833-ee2795dc-d1d0-474d-b48f-f4ecdea9e750.png)
 
 
 # Instalar
