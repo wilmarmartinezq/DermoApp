@@ -1,11 +1,16 @@
 package com.example.dermoapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import android.content.SharedPreferences
+import android.app.AlertDialog
+import android.widget.TextView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
@@ -15,6 +20,10 @@ import kotlinx.android.synthetic.main.item_consultation.*
 
     class MainActivity : AppCompatActivity() {
 
+        private lateinit var sharedPreferences: SharedPreferences
+        private val spFileName = "dermoappFile"
+        private lateinit var username:String
+
         lateinit var consultationRV: RecyclerView
         lateinit var consultationRVAdapter: ConsultationRVAdapter
         lateinit var consultationList: ArrayList<Consultation>
@@ -23,16 +32,44 @@ import kotlinx.android.synthetic.main.item_consultation.*
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
+            sharedPreferences = getSharedPreferences(spFileName, Context.MODE_PRIVATE)
+            username = sharedPreferences.getString("username", "").toString()
+
+
             consultationRV = findViewById(R.id.idRVConsultations)
             consultationList = ArrayList()
             consultationRVAdapter = ConsultationRVAdapter(consultationList)
             consultationRV.adapter = consultationRVAdapter
+
+            btnSignOut.setOnClickListener {
+                AlertDialog
+                    .Builder(this)
+                    .setTitle("Confirmación")
+                    .setMessage("Seguro que quieres cerrar sesión?")
+                    .setPositiveButton("Yes") { dialog, _ ->
+                        //log out
+                        sharedPreferences.edit().clear().apply()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finishAffinity()
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+
+            }
+
 
             getData()
 
             btnConsultation.setOnClickListener {
                 consultationActivityIntent()
             }
+
+
+
+
 
         }
 
@@ -47,8 +84,6 @@ import kotlinx.android.synthetic.main.item_consultation.*
                 JsonArrayRequest(Request.Method.GET, url, null, { response ->
                     try {
                         for (i in 0 until response.length()) {
-                            // on below line we are extracting
-                            // data from each json object
                             val respObj = response.getJSONObject(i)
                             val id = respObj.getString("id")
                             val shape = respObj.getString("shape")
@@ -59,8 +94,11 @@ import kotlinx.android.synthetic.main.item_consultation.*
                             val creationDate = respObj.getString("creationDate")
                             val typeOfInjury = respObj.getString("typeOfInjury")
                             val specialty = respObj.getString("specialty")
+                            val diagnosis = respObj.getString("diagnosis")
+                            val asigned = respObj.getBoolean("asigned")
+                            val acceptDiagnosis = respObj.getBoolean("acceptDiagnosis")
 
-                            consultationList.add(Consultation(id,shape,numberOfInjuries,distribution,comment,image,creationDate,typeOfInjury,specialty))
+                            consultationList.add(Consultation(id,shape,numberOfInjuries,distribution,comment,image,creationDate,typeOfInjury,specialty,diagnosis,asigned,acceptDiagnosis))
 
                             consultationRVAdapter.notifyDataSetChanged()
                         }
@@ -77,6 +115,15 @@ import kotlinx.android.synthetic.main.item_consultation.*
         }
 
         private fun consultationActivityIntent() = startActivity(Intent(this, CreateConsultationActivity::class.java))
+
+
+        fun consultationDetailsConfirm(view: View) {
+            val id = findViewById<TextView>(R.id.id)
+            val Id = id.text.toString()
+            intent.putExtra("id_key", Id)
+            startActivity(Intent(this, ConsultationDetailsActivity::class.java))
+
+        }
 
     }
 

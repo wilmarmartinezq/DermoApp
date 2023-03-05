@@ -25,6 +25,7 @@ class ConsultationRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ConsultationRVAdapter.ConsultationViewHolder, position: Int) {
+        holder.idtv.text = consultationList.get(position).id
         holder.shapetv.text = consultationList.get(position).shape
         holder.numberofinjuriestv.text = consultationList.get(position).numberOfInjuries
         holder.distributiontv.text = consultationList.get(position).distribution
@@ -32,7 +33,6 @@ class ConsultationRVAdapter(
         Picasso.get().load(consultationList.get(position).image).into(holder.imagetv)
         holder.creationdatetv.text = consultationList.get(position).creationDate
         holder.typeofinjurytv.text = consultationList.get(position).typeOfInjury
-        holder.specialtytv.text = consultationList.get(position).specialty
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +41,7 @@ class ConsultationRVAdapter(
 
     class ConsultationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val idtv: TextView = itemView.findViewById(R.id.id)
         val shapetv: TextView = itemView.findViewById(R.id.shape)
         val numberofinjuriestv: TextView = itemView.findViewById(R.id.numberOfInjuries)
         val distributiontv: TextView = itemView.findViewById(R.id.distribution)
@@ -48,6 +49,5 @@ class ConsultationRVAdapter(
         val imagetv: ImageView = itemView.findViewById(R.id.imageview)
         val creationdatetv: TextView = itemView.findViewById(R.id.creationDate)
         val typeofinjurytv: TextView = itemView.findViewById(R.id.typeOfInjury)
-        val specialtytv: TextView = itemView.findViewById(R.id.speciality)
     }
 }

@@ -21,6 +21,7 @@ import com.example.dermoapp.utils.ConnectionManager
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create_consultation.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONObject
 import java.io.IOException
@@ -157,6 +158,10 @@ class CreateConsultationActivity : AppCompatActivity() {
         }
 
 
+        btn_automatic_consultation.setOnClickListener {
+            automaticConsultationActivityIntent()
+        }
+
     }
 
     fun createConsultationBackIntent(view:View) {
@@ -285,6 +290,9 @@ class CreateConsultationActivity : AppCompatActivity() {
                         consultationDetails["creationDate"] = creationdate
                         consultationDetails["typeOfInjury"] = typeofinjuryvalue
                         consultationDetails["specialty"] = speciality
+                        consultationDetails["diagnosis"] = "diagnosis"
+                        consultationDetails["asigned"] = "false"
+                        consultationDetails["acceptDiagnosis"] = "false"
 
 
 
@@ -359,11 +367,13 @@ class CreateConsultationActivity : AppCompatActivity() {
 
 
     private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))
+
     fun consultationAutomaticUpConfirm(view: View) {
         Toast.makeText(this, "Proceso en desarrollo", Toast.LENGTH_SHORT).show()
 
     }
 
+    private fun automaticConsultationActivityIntent() = startActivity(Intent(this, AutomaticConsultationActivity::class.java))
 
 
 }

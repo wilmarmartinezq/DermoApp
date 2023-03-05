@@ -13,18 +13,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:cardElevation="6dp"
         android:layout_margin="12dp"
-        app:cardCornerRadius="6dp">
+        app:cardCornerRadius="6dp"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:onClick="consultationDetailsConfirm">
 
 
             <ImageView
                 android:id="@+id/imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:padding="16dp"
                 android:scaleType="centerCrop"/>
@@ -32,62 +36,129 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/shape"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_margin="10dp"/>
+                android:id="@+id/id"
+                android:textSize="18sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/white"/>
 
             <TextView
+                android:id="@+id/typeOfInjuryTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/numberOfInjuries"
-                android:textSize="18sp"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/distribution"
-                android:textSize="18sp"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/comment"
-                android:textSize="18sp"
-                android:layout_margin="10dp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/image"
-                android:textSize="18sp"
-                android:layout_margin="10dp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/creationDate"
-                android:textSize="18sp"
-                android:layout_margin="10dp"/>
-
+                android:text="@string/typeofinjury"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/typeOfInjury"
                 android:textSize="18sp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+
+            <TextView
+                android:id="@+id/shapeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shapetype"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/speciality"
+                android:id="@+id/shape"
+                android:textSize="20sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+
+            <TextView
+                android:id="@+id/numberOfInjuriesTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numberofinjuries"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberOfInjuries"
                 android:textSize="18sp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+
+            <TextView
+                android:id="@+id/distributionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distribution"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distribution"
+                android:textSize="18sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+
+
+            <TextView
+                android:id="@+id/commentTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comment"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment"
+                android:textSize="18sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/creationDateTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/creationdate"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/creationDate"
+                android:textSize="18sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/asignedTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/asigned"
+                android:textSize="18sp"
+                android:layout_margin="1dp"
+                android:textColor="@android:color/black"/>
 
 
         </LinearLayout>

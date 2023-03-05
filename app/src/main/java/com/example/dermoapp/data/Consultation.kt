@@ -9,6 +9,12 @@ data class Consultation(
     val image: String,
     val creationDate: String,
     val typeOfInjury: String,
-    val specialty: String
+    val specialty: String,
+    val diagnosis: String,
+    val asigned: Boolean,
+    val acceptDiagnosis: Boolean
+
+
+
 
 )

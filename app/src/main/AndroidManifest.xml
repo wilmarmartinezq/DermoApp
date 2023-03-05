@@ -24,8 +24,14 @@
             android:name=".CreateConsultationActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="sensorPortrait" />
-
-
+        <activity
+            android:name=".ConsultationDetailsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".AutomaticConsultationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="sensorPortrait" />
 
         <activity
             android:name=".LoginActivity"
