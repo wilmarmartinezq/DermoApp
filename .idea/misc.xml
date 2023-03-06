@@ -21,15 +21,23 @@
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/activity_registration.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/activity_res_menu.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/consultation_item.xml" value="0.1123046875" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/data_item.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/drawer_header.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/fragment_consultations.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/fragment_myprofile.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/fragment_register.xml" value="0.18" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/fragment_registrarse.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/item_automatic_consultation.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/item_consultation.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/item_consultation_details.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/item_consultations.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/item_users.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/menu_item.xml" value="0.1" />
+        <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/menu_items.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/nav_header.xml" value="0.1" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/recycler_home_single_row.xml" value="0.6006600660066007" />
         <entry key="..\:/Users/Wilmar/Desktop/Proyecto II/DermoApp/app/src/main/res/layout/skin_type.xml" value="0.1675213675213675" />

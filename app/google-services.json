@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "541756447699",
+    "project_id": "dermoappfront",
+    "storage_bucket": "dermoappfront.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541756447699:android:8155ca800c5d3619c8ad26",
+        "android_client_info": {
+          "package_name": "com.example.dermoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541756447699-utaramu0ou8pncumu0k2885jps6tbj0o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF9RW-H2t_woM5x8FzilA7WogSjl3g_Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541756447699-utaramu0ou8pncumu0k2885jps6tbj0o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

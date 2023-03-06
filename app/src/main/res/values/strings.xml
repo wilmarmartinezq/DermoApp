@@ -17,6 +17,11 @@
     <string name="email">Correo electronico</string>
     <string name="log_out">Cerrar sesión</string>
     <string name="appointment">Crear Consulta</string>
+    <string name="see">Ver detalle</string>
+    <string name="creationdate">Fecha de creación</string>
+    <string name="automatic">Consulta automática</string>
+    <string name="status">Estado</string>
+    <string name="details">Detalle de la consulta</string>
     <string name="create_appointment">CREAR CONSULTA</string>
     <string name="automatic_appointment">CONSULTA AUTOMATICA</string>
     <string name="comment">Comentario</string>

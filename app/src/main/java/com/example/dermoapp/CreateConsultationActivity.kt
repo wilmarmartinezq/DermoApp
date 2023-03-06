@@ -21,6 +21,7 @@ import com.example.dermoapp.utils.ConnectionManager
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create_consultation.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONObject
 import java.io.IOException
@@ -157,13 +158,13 @@ class CreateConsultationActivity : AppCompatActivity() {
         }
 
 
-
-
-
+        btn_automatic_consultation.setOnClickListener {
+            automaticConsultationActivityIntent()
+        }
 
     }
 
-    fun createConsultationBackIntent(view: View) {
+    fun createConsultationBackIntent(view:View) {
         onBackPressed()
     }
 
@@ -289,6 +290,9 @@ class CreateConsultationActivity : AppCompatActivity() {
                         consultationDetails["creationDate"] = creationdate
                         consultationDetails["typeOfInjury"] = typeofinjuryvalue
                         consultationDetails["specialty"] = speciality
+                        consultationDetails["diagnosis"] = "diagnosis"
+                        consultationDetails["asigned"] = "false"
+                        consultationDetails["acceptDiagnosis"] = "false"
 
 
 
@@ -333,7 +337,7 @@ class CreateConsultationActivity : AppCompatActivity() {
                     val consultationPatientDetails=makeHashMapConsultationPatient().toMap()
                     val jsonObjectRequestPatient=object : JsonObjectRequest(
                         Method.POST,
-                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/"+username+"/consultations/"+idvalue,
+                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$idvalue",
 
                         JSONObject(consultationPatientDetails),
                         Response.Listener {
@@ -346,7 +350,6 @@ class CreateConsultationActivity : AppCompatActivity() {
                             }
                         },
                         Response.ErrorListener {
-                            Toast.makeText(this, "Verificar la conexión a internet", Toast.LENGTH_SHORT).show()
                             mProgressDialog.dismiss()
                         }) {
                     }
@@ -364,11 +367,13 @@ class CreateConsultationActivity : AppCompatActivity() {
 
 
     private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))
+
     fun consultationAutomaticUpConfirm(view: View) {
-        Toast.makeText(this, "En proceso de creación", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Proceso en desarrollo", Toast.LENGTH_SHORT).show()
 
     }
 
+    private fun automaticConsultationActivityIntent() = startActivity(Intent(this, AutomaticConsultationActivity::class.java))
 
 
 }
