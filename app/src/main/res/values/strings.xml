@@ -29,7 +29,7 @@
     <string name="shapetype">Forma de la Herida</string>
     <string name="numberofinjuries">Número de Heridas</string>
     <string name="distribution">Distribución de la Herida</string>
-
+    <string name="acceptdiagnosis">Aceptar Diagnostico</string>
 
 
 </resources>

@@ -158,9 +158,6 @@ class CreateConsultationActivity : AppCompatActivity() {
         }
 
 
-        btn_automatic_consultation.setOnClickListener {
-            automaticConsultationActivityIntent()
-        }
 
     }
 
@@ -330,14 +327,12 @@ class CreateConsultationActivity : AppCompatActivity() {
                             mProgressDialog.dismiss()
                         }) {
                     }
-                    queue.add(jsonObjectRequest)
-
 
                     val queuepatient= Volley.newRequestQueue(this)
                     val consultationPatientDetails=makeHashMapConsultationPatient().toMap()
                     val jsonObjectRequestPatient=object : JsonObjectRequest(
                         Method.POST,
-                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$idvalue",
+                        "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/"+username+"/consultations/"+idvalue,
 
                         JSONObject(consultationPatientDetails),
                         Response.Listener {
@@ -353,8 +348,10 @@ class CreateConsultationActivity : AppCompatActivity() {
                             mProgressDialog.dismiss()
                         }) {
                     }
+                    queue.add(jsonObjectRequest)
                     queuepatient.add(jsonObjectRequestPatient)
-            }
+
+                }
         }
 
             }
@@ -369,11 +366,175 @@ class CreateConsultationActivity : AppCompatActivity() {
     private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))
 
     fun consultationAutomaticUpConfirm(view: View) {
-        Toast.makeText(this, "Proceso en desarrollo", Toast.LENGTH_SHORT).show()
+        comment=editTextComentario.text.toString()
+        creationdate= ""
+
+        if(typeofinjuryvalue=="Mácula") {
+            speciality = "pediatrics"
+        }
+
+        if(typeofinjuryvalue=="Pápula") {
+            speciality = "elderly"
+        }
+
+        if(typeofinjuryvalue=="Parche") {
+            speciality = "cosmetic"
+        }
+
+        if(typeofinjuryvalue=="Placa") {
+            speciality = "oncology"
+        }
+
+        if(typeofinjuryvalue=="Nódulo") {
+            speciality = "oncology"
+        }
+
+        if(typeofinjuryvalue=="Ampolla") {
+            speciality = "cosmetic"
+        }
+
+        if(typeofinjuryvalue=="Úlcera") {
+            speciality = "oncology"
+        }
+
+        if(typeofinjuryvalue=="Vesícula") {
+            speciality = "cosmetic"
+        }
+
+        if(typeofinjuryvalue.isBlank() || shapetypevalue.isBlank() || numberofinjuriesvalue.isBlank() || distributionvalue.isBlank()) {
+            Toast.makeText(this, "Todos los campos deben ser diligenciados", Toast.LENGTH_SHORT).show()
+        }
+
+        else{
+            if(!ConnectionManager().isNetworkAccessActive(this)){
+                AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setIcon(R.drawable.no_connection)
+                    .setTitle("Sin Internet")
+                    .setMessage("Favor revisar el acceso a internet")
+                    .setPositiveButton("Retry") { dialog, _ ->
+                        if (ConnectionManager().isNetworkAccessActive(this)) {
+                            dialog.dismiss()
+                        } else {
+                            Toast.makeText(this, "Todavía desconectado :(", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    .setNegativeButton("Open Settings") { _, _ ->
+                        startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS))
+                    }.show()
+            }else{
+                registerConsult()
+                registerConsultAutomatic()
+                registerConsultationPatient()
+            }
+        }
+
+
 
     }
 
-    private fun automaticConsultationActivityIntent() = startActivity(Intent(this, AutomaticConsultationActivity::class.java))
+
+
+    private fun registerConsult() {
+
+        val queue=Volley.newRequestQueue(this)
+        val userDetails=makeHashMapConsult().toMap()
+        val jsonObjectRequest=object : JsonObjectRequest(
+            Method.POST,
+            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations",
+            JSONObject(userDetails),
+            Response.Listener {
+                try {
+                    Toast.makeText(this, "Registrando consulta automatica", Toast.LENGTH_SHORT).show()
+
+                }catch (e:Exception){
+                    Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
+                }
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        queue.add(jsonObjectRequest)
+    }
+
+
+    private fun registerConsultAutomatic() {
+
+        val queue=Volley.newRequestQueue(this)
+        val userDetails=makeHashMapConsultAutomatic().toMap()
+        val jsonObjectRequest=object : JsonObjectRequest(
+            Method.POST,
+            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/autodiagnosis",
+            JSONObject(userDetails),
+            Response.Listener {
+                try {
+                }catch (e:Exception){
+                    Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
+                }
+            },
+            Response.ErrorListener {
+
+            }) {
+        }
+        queue.add(jsonObjectRequest)
+    }
+
+
+    private fun registerConsultationPatient() {
+
+        val queue=Volley.newRequestQueue(this)
+        val userDetails=makeHashMapConsultationPatient().toMap()
+        val jsonObjectRequest=object : JsonObjectRequest(
+            Method.POST,
+            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$idvalue",
+            JSONObject(userDetails),
+            Response.Listener {
+                try {
+                    mainActivityIntent()
+                    finishAffinity()
+                }catch (e:Exception){
+                    Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
+                }
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        queue.add(jsonObjectRequest)
+    }
+
+
+
+    private fun makeHashMapConsult():Map<String,String> {
+        val userDetails=HashMap<String,String>()
+        userDetails["id"] = idvalue
+        userDetails["shape"] = shapetypevalue
+        userDetails["numberOfInjuries"] = numberofinjuriesvalue
+        userDetails["distribution"] = distributionvalue
+        userDetails["comment"] = "Diagnóstico Generado automática"
+        userDetails["image"] = "https://firebasestorage.googleapis.com/v0/b/dermoappfront.appspot.com/o/images_consultations%2FheaderLogo.png?alt=media&token=07204193-f80a-4d57-be8d-e6d1234205dd"
+        userDetails["creationDate"] = creationdate
+        userDetails["typeOfInjury"] = typeofinjuryvalue
+        userDetails["specialty"] = speciality
+        userDetails["diagnosis"] = "diagnosis"
+        userDetails["asigned"] = "false"
+        userDetails["acceptDiagnosis"] = "false"
+
+        return userDetails
+    }
+
+    private fun makeHashMapConsultAutomatic():Map<String,String> {
+        val userDetails=HashMap<String,String>()
+        userDetails["question"] = "Tengo una lesión en la piel en forma de $typeofinjuryvalue, y con número de lesiones $numberofinjuriesvalue, en forma de $shapetypevalue y con distribución $distributionvalue. Me podrías indicar un diagnóstico para mi lesión de la piel\n\n\n"
+        userDetails["consultationId"] = idvalue
+
+        return userDetails
+    }
+
+    private fun makeHashMapConsultationPatient():Map<String,String> {
+        val userDetails=HashMap<String,String>()
+
+        return userDetails
+    }
 
 
 }
