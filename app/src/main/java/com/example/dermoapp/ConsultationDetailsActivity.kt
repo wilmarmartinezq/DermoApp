@@ -11,6 +11,10 @@ import android.content.Intent
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.finishAffinity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dermoapp.data.Consultation
 import com.android.volley.Response
@@ -36,13 +40,27 @@ class ConsultationDetailsActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_consultation_details)
 
+        sharedPreferences = getSharedPreferences(spFileName, Context.MODE_PRIVATE)
+        username = sharedPreferences.getString("username", "").toString()
 
         val getData = intent.getParcelableExtra<Consultation>("android")
         if (getData != null) {
-            val detailTitle: TextView = findViewById(R.id.DetailsTV)
+            val detailDiagnosis: TextView = findViewById(R.id.DetailsTV)
+            val detailAccept: TextView = findViewById(R.id.DetailsAcceptTV)
+            val detailWithOutDiagnosis: TextView = findViewById(R.id.DetailsDiagnosisTV)
             val detailImage: ImageView = findViewById(R.id.DetailsIv)
-            detailTitle.text = getData.diagnosis
+            detailDiagnosis.text = getData.diagnosis
             Picasso.get().load(getData.image).into(detailImage)
+            if ((getData.acceptDiagnosis=="false") and (getData.diagnosis!="") and (getData.comment!="Diagnóstico creado automáticamente")) {
+                detailAccept.text = "Aceptar diagnóstico"
+
+            }
+
+            if (getData.diagnosis=="") {
+                detailWithOutDiagnosis.text = "Sin diagnóstico"
+
+            }
+
         }
     }
 
@@ -80,18 +98,18 @@ class ConsultationDetailsActivity : AppCompatActivity(){
 
     private fun register() {
 
-        val sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE)
-        val value = sharedPreferences.getString("value", "")
+        val getData = intent.getParcelableExtra<Consultation>("android")
 
         val queue=Volley.newRequestQueue(this)
         val userDetails=makeHashMapPatients().toMap()
         val jsonObjectRequest=object : JsonObjectRequest(
             Method.PUT,
-            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$value",
+            "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations/${getData?.id}",
             JSONObject(userDetails),
             Response.Listener {
                 try {
                     Toast.makeText(this,"Aceptando diagnóstico ...",Toast.LENGTH_SHORT).show()
+                    mainActivityIntent()
 
                 }catch (e:Exception){
                     Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
@@ -112,61 +130,12 @@ class ConsultationDetailsActivity : AppCompatActivity(){
 
     private fun makeHashMapPatients():Map<String,String> {
         val userDetails=HashMap<String,String>()
-        userDetails["acceptDiagnosis"] = "Si"
+        userDetails["acceptDiagnosis"] = "true"
 
         return userDetails
     }
 
-
-
-/*
-    private fun getData() {
-
-        val id = intent.getStringExtra("key")
-
-
-        var url = "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations/$id"
-
-        val queue = Volley.newRequestQueue(this@ConsultationDetailsActivity)
-
-        val request =
-            JsonArrayRequest(Request.Method.GET, url, null, { response ->
-                try {
-                    for (i in 0 until response.length()) {
-                        val respObj = response.getJSONObject(i)
-                        val idd = respObj.getString("id")
-                        val shape = respObj.getString("shape")
-                        val numberOfInjuries = respObj.getString("numberOfInjuries")
-                        val distribution = respObj.getString("distribution")
-                        val comment = respObj.getString("comment")
-                        val image = respObj.getString("image")
-                        val creationDate = respObj.getString("creationDate")
-                        val typeOfInjury = respObj.getString("typeOfInjury")
-                        val specialty = respObj.getString("specialty")
-                        val diagnosis = respObj.getString("diagnosis")
-                        val asigned = respObj.getBoolean("asigned")
-                        val acceptDiagnosis = respObj.getString("acceptDiagnosis")
-
-                        consultationDetail.add(Consultation(idd,shape,numberOfInjuries,distribution,comment,image,creationDate,typeOfInjury,specialty,diagnosis,asigned,acceptDiagnosis))
-
-                        consultationDetailRVAdapter.notifyDataSetChanged()
-                    }
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-
-            }, { error ->
-                Toast.makeText(this@ConsultationDetailsActivity, "Error al recibir datos", Toast.LENGTH_SHORT)
-                    .show()
-            })
-        queue.add(request)
-    }
-
- */
+    private fun mainActivityIntent() = startActivity(Intent(this, MainActivity::class.java))
 
 }
 
-private fun ImageView.setImageResource(image: String) {
-
-}

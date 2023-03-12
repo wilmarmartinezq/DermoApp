@@ -26,7 +26,6 @@ class ConsultationRVAdapter(private var consultationList: ArrayList<Consultation
 
     override fun onBindViewHolder(holder: ConsultationViewHolder, position: Int) {
         val currentItem = consultationList[position]
-        holder.idtv.text = currentItem.id
         holder.shapetv.text = currentItem.shape
         holder.numberofinjuriestv.text = currentItem.numberOfInjuries
         holder.distributiontv.text = currentItem.distribution
@@ -48,7 +47,6 @@ class ConsultationRVAdapter(private var consultationList: ArrayList<Consultation
 
     class ConsultationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val idtv: TextView = itemView.findViewById(R.id.id)
         val shapetv: TextView = itemView.findViewById(R.id.shape)
         val numberofinjuriestv: TextView = itemView.findViewById(R.id.numberOfInjuries)
         val distributiontv: TextView = itemView.findViewById(R.id.distribution)

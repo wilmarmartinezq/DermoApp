@@ -64,7 +64,15 @@
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:padding="16dp"
-                android:scaleType="centerCrop"/>
+   />
+
+            <TextView
+                android:id="@+id/DiganosisTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/diagnosis"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/DetailsTV"
@@ -75,20 +83,33 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"/>
 
-            <Button
-                android:id="@+id/btnAcceptDiagnosis"
+
+            <TextView
+                android:id="@+id/DetailsAcceptTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:background="@color/colorPrimary"
+                android:layout_marginTop="12dp"
                 android:onClick="acceptDiagnosis"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="8dp"
-                android:text="@string/acceptdiagnosis"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/DetailsDiagnosisTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:background="@color/teal_200"
+                android:textSize="20sp"/>
+
+
+            <Button
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
 
 
         </LinearLayout>
