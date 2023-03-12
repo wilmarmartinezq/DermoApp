@@ -346,6 +346,8 @@ class CreateConsultationActivity : AppCompatActivity() {
                         },
                         Response.ErrorListener {
                             mProgressDialog.dismiss()
+                            btn_register_consultation.setPressed(true)
+
                         }) {
                     }
                     queue.add(jsonObjectRequest)
@@ -497,6 +499,9 @@ class CreateConsultationActivity : AppCompatActivity() {
                 }
             },
             Response.ErrorListener {
+                btn_automatic_consultation.setPressed(true)
+
+
             }) {
         }
         queue.add(jsonObjectRequest)

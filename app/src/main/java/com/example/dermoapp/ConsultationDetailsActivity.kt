@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley
 import com.example.dermoapp.utils.ConnectionManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_consultation_details.*
+import kotlinx.android.synthetic.main.activity_create_consultation.*
 import org.json.JSONObject
 
 
@@ -51,12 +52,12 @@ class ConsultationDetailsActivity : AppCompatActivity(){
             val detailImage: ImageView = findViewById(R.id.DetailsIv)
             detailDiagnosis.text = getData.diagnosis
             Picasso.get().load(getData.image).into(detailImage)
-            if ((getData.acceptDiagnosis=="false") and (getData.diagnosis!="") and (getData.comment!="Diagnóstico creado automáticamente")) {
+            if ((getData.acceptDiagnosis=="false") and (getData.diagnosis!="diagnosis") and (getData.comment!="Diagnóstico Generado automática")) {
                 detailAccept.text = "Aceptar diagnóstico"
 
             }
 
-            if (getData.diagnosis=="") {
+            if (getData.diagnosis=="diagnosis") {
                 detailWithOutDiagnosis.text = "Sin diagnóstico"
 
             }
@@ -118,7 +119,6 @@ class ConsultationDetailsActivity : AppCompatActivity(){
             Response.ErrorListener {
                 Toast.makeText(this, "Un error inesperado ha ocurrido", Toast.LENGTH_SHORT).show()
 
-
             }) {
         }
         queue.add(jsonObjectRequest)
@@ -129,7 +129,20 @@ class ConsultationDetailsActivity : AppCompatActivity(){
 
 
     private fun makeHashMapPatients():Map<String,String> {
+
+        val getData = intent.getParcelableExtra<Consultation>("android")
+
         val userDetails=HashMap<String,String>()
+        userDetails["shape"] = getData!!.shape
+        userDetails["numberOfInjuries"] = getData.numberOfInjuries
+        userDetails["distribution"] = getData.distribution
+        userDetails["comment"] = getData.comment
+        userDetails["image"] = getData.image
+        userDetails["creationDate"] = getData.creationDate
+        userDetails["typeOfInjury"] = getData.typeOfInjury
+        userDetails["specialty"] = getData.specialty
+        userDetails["diagnosis"] = getData.diagnosis
+        userDetails["asigned"] = "true"
         userDetails["acceptDiagnosis"] = "true"
 
         return userDetails
