@@ -21,6 +21,7 @@
     <string name="creationdate">Fecha de creación</string>
     <string name="automatic">Consulta automática</string>
     <string name="status">Estado</string>
+    <string name="diagnosis">Diagóstico</string>
     <string name="details">Detalle de la consulta</string>
     <string name="create_appointment">CREAR CONSULTA</string>
     <string name="automatic_appointment">CONSULTA AUTOMATICA</string>
@@ -29,7 +30,7 @@
     <string name="shapetype">Forma de la Herida</string>
     <string name="numberofinjuries">Número de Heridas</string>
     <string name="distribution">Distribución de la Herida</string>
-
+    <string name="acceptdiagnosis">Aceptar Diagnostico</string>
 
 
 </resources>

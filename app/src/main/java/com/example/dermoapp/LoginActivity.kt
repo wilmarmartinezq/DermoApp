@@ -104,10 +104,14 @@ class LoginActivity : AppCompatActivity() {
                 headers["Content-type"] = "application/json"
 //                headers["token"] = getString(R.string.token)
                 return headers
+
+
             }
         }
         queue.add(jsonObjectRequest)
+
     }
+
 
     private fun setLoggedIn() =sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
 

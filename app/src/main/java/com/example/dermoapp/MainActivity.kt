@@ -30,7 +30,9 @@ import kotlinx.android.synthetic.main.item_consultation.*
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
+
             setContentView(R.layout.activity_main)
+
 
             sharedPreferences = getSharedPreferences(spFileName, Context.MODE_PRIVATE)
             username = sharedPreferences.getString("username", "").toString()
@@ -61,6 +63,7 @@ import kotlinx.android.synthetic.main.item_consultation.*
             }
 
 
+
             getData()
 
             btnConsultation.setOnClickListener {
@@ -76,7 +79,8 @@ import kotlinx.android.synthetic.main.item_consultation.*
 
 
         private fun getData() {
-            var url = "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations"
+            var url = "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/patients/$username/consultations"
+//            var url = "https://dermoapp-backend-nest-z4o5lll72a-uw.a.run.app/Api/V1/consultations"
 
             val queue = Volley.newRequestQueue(this@MainActivity)
 
@@ -96,11 +100,18 @@ import kotlinx.android.synthetic.main.item_consultation.*
                             val specialty = respObj.getString("specialty")
                             val diagnosis = respObj.getString("diagnosis")
                             val asigned = respObj.getBoolean("asigned")
-                            val acceptDiagnosis = respObj.getBoolean("acceptDiagnosis")
+                            val acceptDiagnosis = respObj.getString("acceptDiagnosis")
 
                             consultationList.add(Consultation(id,shape,numberOfInjuries,distribution,comment,image,creationDate,typeOfInjury,specialty,diagnosis,asigned,acceptDiagnosis))
 
                             consultationRVAdapter.notifyDataSetChanged()
+
+                            consultationRVAdapter.itemClick = {
+                                val intent = Intent(this, ConsultationDetailsActivity::class.java)
+                                intent.putExtra("android", it)
+                                startActivity(intent)
+                            }
+
                         }
 
                     } catch (e: Exception) {
@@ -117,13 +128,6 @@ import kotlinx.android.synthetic.main.item_consultation.*
         private fun consultationActivityIntent() = startActivity(Intent(this, CreateConsultationActivity::class.java))
 
 
-        fun consultationDetailsConfirm(view: View) {
-            val id = findViewById<TextView>(R.id.id)
-            val Id = id.text.toString()
-            intent.putExtra("id_key", Id)
-            startActivity(Intent(this, ConsultationDetailsActivity::class.java))
-
-        }
 
     }
 
